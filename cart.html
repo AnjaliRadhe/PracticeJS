@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheZenDen</title>
+    <link rel="stylesheet" href="./resources/cart-style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!--HEADER SECTION-->
+        <header>
+            <div class="left-nav ">
+                <img class="logo" src="./resources/image.png">
+            </div>
+            <nav>
+                <a class="navlink active " href="cart.html">Cart</a>
+                <a class="navlink " href="store.html">Store</a>
+                <a class="navlink " href="index.html">Home</a>
+                <div class="subheader">
+                    <h2 class="desc"> Ultimate <strong>yoga gear destination</strong> </h2>
+                    <button class=" buttonshopnow" onclick="document.location='store.html'">Shop now</button>
+                </div>
+            </nav>
+
+        </header>
+        <!--PRODUCTS SECTION-->
+        <h2>Cart</h2>
+        <table class="table1">
+            <thead>
+                <tr>
+                    <th class="table-image">Item</th>
+                    <th class="Item-name">Item Name</th>
+                    <th class="price">Price</th>
+                    <th class="quantity">Quantity</th>
+                    <th class="remove">Remove</th>
+                    <th class="total-value">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Cart items will be dynamically rendered here -->
+            </tbody>
+        </table>
+        <table class="table2">
+            <tr>
+                <td class="labels">Subtotal</td>
+                <td > </td>
+            </tr>
+            <tr>
+                <td class="labels">Shipping</td>
+                <td > </td>
+            </tr>
+            <tr>
+                <td class="labels">Grandtotal</td>
+                <td ></td> 
+            </tr>
+        </table>
+        
+         <!--FOOTER SECTION-->
+         <footer>
+            <br>
+            <h3>copyright©2024 TheZenDen </h3>
+            <h5 >Current Date and time</h5>
+            <div class="datetime"></div>
+            <br>
+        </footer>
+    </div>
+    <script src="./assets/cart-js.js"></script>
+</body>
+
+</html>
