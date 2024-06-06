@@ -143,9 +143,8 @@ header {
     font-family: H2Font;
 }
 
-.product-image1,
-.product-image2,
-.product-image3 {
+.product-image
+{
     width: 200px;
     height: 320px;
 }
