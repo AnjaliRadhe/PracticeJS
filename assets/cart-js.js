@@ -2,7 +2,7 @@
 function displayDateTime() {
     const now = new Date();
     const time = document.querySelector(".datetime");
-    time.innerHTML = ` ${now.toLocaleString()}`;
+    time.innerHTML = `<strong>Current Date and time: </strong> ${now.toLocaleString()}`;
 }
 
 displayDateTime();
@@ -12,7 +12,7 @@ setInterval(displayDateTime, 1000);
 let cart = [];
 
 // Function to save the cart to local storage
-function saveCart() {
+function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
@@ -21,13 +21,31 @@ function loadCart() {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
         cart = JSON.parse(savedCart);
+        updateCartCount(cart);
         return cart;
+    }
+
+}
+
+// Update the cart count
+function updateCartCount() {
+    const cartCountElement = document.getElementById('cart-count');
+    //const itemCount = cart.length;
+    const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    if (itemCount > 0) {
+        cartCountElement.textContent = itemCount;
+        cartCountElement.style.display = 'block';
+    } else {
+        cartCountElement.style.display = 'none';
     }
 }
 
+
 // Render the cart items to the DOM
 function renderCart() {
-    const cart = loadCart();
+    let cart = loadCart();
+
     const cartTableBody = document.querySelector('.table1 tbody');
 
     // Clear existing cart items
@@ -49,12 +67,12 @@ function renderCart() {
             <td class="Item-name">${item.productname}</td>
             <td class="price">${item.price}</td>
             <td class="quantity">
-            <button type="button" class="button-decrement" data-index="${index}">-</button>
+            <button type="button" class="button-decrement" data-index=${item.id}>-</button>
             <span>${item.quantity}</span>
-            <button type="button" class="button-increment" data-index="${index}">+</button>
+            <button type="button" class="button-increment" data-index=${item.id}>+</button>
             </td>
-            <td class="remove"><button type="button" class="buttonremove" data-index="${index}">Remove</button></td>
-            <td class="total-value">${(item.price.replace('$', '') * item.quantity).toFixed(2)}</td>
+            <td class="remove"><button type="button" class="buttonremove" data-index="${item.id}">Remove</button></td>
+            <td class="total-value">${(item.price * item.quantity).toFixed(2)}</td>
         `;
         cartTableBody.appendChild(row);
         updateTotals(cart)
@@ -92,32 +110,42 @@ function renderCart() {
 // Increment the quantity of an item in the cart
 function incrementQuantity(index) {
     const cart = loadCart();
-    cart[index].quantity++;
+    const product = cart.find(p => p.id === index);
+    if (product) {
+        product.quantity++;
+    }
     saveCart(cart);
+    updateCartCount(cart);
     renderCart();
 }
 
 // Decrement the quantity of an item in the cart
 function decrementQuantity(index) {
     const cart = loadCart();
-    if (cart[index].quantity > 1) {
-        cart[index].quantity--;
-        saveCart(cart);
-        renderCart();
+    const product = cart.find(p => p.id === index);
+    if (product.quantity > 1) {
+        product.quantity--;
     }
+    saveCart(cart);
+    updateCartCount(cart);
+    renderCart();
 }
 
 // Remove an item from the cart
 function removeFromCart(index) {
-    let cart = loadCart();
-    cart.splice(index, 1);
+    const cart = loadCart();
+    console.log(cart);
+    const product = cart.find(p => p.id === index);
+    const index1 = cart.findIndex(p => p.id === index);
+    cart.splice(index1, 1)
     saveCart(cart);
+    updateCartCount(cart);
     renderCart();
 }
 
 // Update the totals (subtotal, shipping, grand total)
 function updateTotals(cart) {
-    const subtotal = cart.reduce((acc, item) => acc + (item.price.replace('$', '') * item.quantity), 0);
+    const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     const shipping = 15.00; // Assuming a fixed shipping cost
     const grandTotal = subtotal + shipping;
 

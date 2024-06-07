@@ -29,7 +29,7 @@ body {
     height: 25px;
     margin-top: 10px;
     color: #FBF3D5;
-    background-color: #9CAFAA;
+    background-color: #bb835e;
 }
 
 .subheader {
@@ -39,17 +39,35 @@ body {
     padding-top: 10px;
 }
 
+.spaceneeded{
+    margin: 20px;
+}
 /*HEADER ELEMENT STYLING*/
 header {
     display: grid;
     width: 80%;
     max-height: 180px;
-    background-color: #EFBC9B;
+    background-color: #ffffff;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr 1fr;
 
 }
-
+#cart-count {
+    position: relative;
+    top: -65px;
+    right: -25px;
+    width: 4px;
+    height: 15px;
+    background-color: #bb835e;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 15px;;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: none; /* Initially hidden */
+}
 .left-nav {
     display: grid;
     width: 100%;
@@ -58,9 +76,10 @@ header {
 
 .logo {
     margin-top: 10px;
-    width: 150px;
-    height: 150px;
+    width: 220px;
+    height: 130px;
     justify-self: center;
+    padding-top: 10px;
 }
 
 .nav {
@@ -91,7 +110,7 @@ header {
 }
 
 .navlink:hover {
-    color: #FBF3D5;
+    color: #b47a21;
     box-shadow: inset 200px 0 0 0 #9CAFAA;
 }
 
@@ -100,7 +119,7 @@ footer {
     display: flex;
     justify-content: space-between;
     width: 80%;
-    background-color: #9CAFAA;
+    background-color: #bb835e;
 }
 
 /*TABLE STYLING*/

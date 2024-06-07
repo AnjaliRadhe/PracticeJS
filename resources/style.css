@@ -25,12 +25,30 @@ header {
     display: grid;
     width: 80%;
     max-height: 180px;
-    background-color: #EFBC9B;
+    background-color: #ffffff;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr 1fr;
 
 }
-
+#cart-count {
+    position: relative;
+    top: -65px;
+    right: -25px;
+    width: 4px;
+    height: 15px;
+    background-color: #bb835e;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 15px;;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: none; /* Initially hidden */
+}
+.spaceneeded{
+    margin: 20px;
+}
 .left-nav {
     display: grid;
     width: 100%;
@@ -39,9 +57,10 @@ header {
 
 .logo {
     margin-top: 10px;
-    width: 150px;
-    height: 150px;
+    width: 220px;
+    height: 130px;
     justify-self: center;
+   padding-top: 10px;
 }
 
 .nav {
@@ -72,7 +91,7 @@ header {
 }
 
 .navlink:hover {
-    color: #FBF3D5;
+    color: #b47a21;
     box-shadow: inset 200px 0 0 0 #9CAFAA;
 }
 
@@ -92,7 +111,7 @@ header {
     height: 25px;
     margin-top: 10px;
     color: #FBF3D5;
-    background-color: #9CAFAA;
+    background-color: #bb835e;
 }
 
 /*LATEST PRODUCT ELEMENT STYLING*/
@@ -150,13 +169,15 @@ header {
  {
     width: 200px;
     height: 320px;
+    margin-top:30px;
+    border: 3px solid black;
 }
 
 .buttoncart {
     width: 100px;
     height: 25px;
-    color: #FBF3D5;
-    background-color: #EFBC9B;
+    color: #ffbd59;
+    background-color: #ffffff;
 }
 .Hoverbutton{
     width: 300px;
@@ -177,7 +198,7 @@ header {
     display: grid;
     width: 80%;
     height: auto;
-    background-color: #EFBC9B;
+    background-color: #ffffff;
     grid-template-columns: 1fr 2fr;
     margin-bottom: 10px;
 
@@ -193,6 +214,7 @@ header {
     height: 150px;
     justify-self: center;
     align-self: center;
+    border: 3px solid black;
 }
 
 .details {
@@ -204,18 +226,14 @@ header {
 
 }
 
-/*Display COHORT INFO*/
-.info-container {
-    width:80%;
-    margin: auto;
-}
+ 
 
 /*FOOTER  ELEMENT STYLING*/
 footer {
     display: flex;
     justify-content:space-between;
     width: 80%;
-    background-color: #9CAFAA;
+    background-color: #bb835e;
 }
 /* MEDIA QUERY TO KEEP IT RESPONSIVE FOR SMALLER SCREENS*/
 @media screen and (max-width: 540px) {

@@ -3,7 +3,7 @@
 function displayDateTime() {
     const now = new Date();
     const time = document.querySelector(".datetime");
-    time.innerHTML = ` ${now.toLocaleString()}`;
+    time.innerHTML = `<strong>Current Date and time: </strong> ${now.toLocaleString()}`;
 }
 
 displayDateTime();
@@ -12,65 +12,13 @@ displayDateTime();
 setInterval(displayDateTime, 1000);
 
 
-//display some info from the API endpoint to the user
-const url = 'https://onlineprojectsgit.github.io/API/WDEndpoint.json';
-const Hoverbutton = document.querySelector('.Hoverbutton');
-
-// Function to display the data in the info container
-function displayData(data) {
-    const infoDiv = document.querySelector('.info-container');
-    const { id, cohort, Name, Start, End, instructor, students } = data.info;
-    const predata = infoDiv.innerHTML;
-
-    infoDiv.innerHTML = predata + `
-        <h1>${Name} (Cohort ${cohort})</h1>
-        <p><strong>ID:</strong> ${id}</p>
-        <p><strong>Start Date:</strong> ${Start}</p>
-        <p><strong>End Date:</strong> ${End}</p>
-        <h2>Instructor</h2>
-        <p><strong>Name:</strong> ${instructor.name}</p>
-        <p><strong>Position:</strong> ${instructor.position}</p>
-        <p><strong>Cohorts:</strong> ${instructor.cohorts}</p>
-        <h2>Students</h2>
-        <p>${students}</p>
-        <button class="Hoverbutton1">Click to Close</button>
-    ` ;
-
-    const Hoverbuttonclose = document.querySelector('.Hoverbutton1');
-    Hoverbuttonclose.addEventListener('click', () => {
-        infoDiv.innerHTML = '';
-        Hoverbuttonclose.style.display = 'none';
-        window.location.reload();
-    })
-
-}
-
-// Fetch data from the API endpoint
-const getinfo = async () => {
-    try {
-        const response = await fetch(url);
-        if (response.ok) {
-            const data = await response.json();
-            displayData(data);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-// Add event listener to the button to display info on click
-Hoverbutton.addEventListener('click', () => {
-    Hoverbutton.style.display = 'none';
-    getinfo();
-})
-
 // Define the products
 const products = [
-    { id: 1, productname: 'Yoga Book', price: '$40.00', image: "./resources/latproduct-1.jpg",quantity: 1 },
-    { id: 2, productname: 'Cushion', price: '$65.00', image: "./resources/latproduct-2.jpg" ,quantity: 1},
-    { id: 3, productname: 'Yoga Mat', price:' $39.00', image: "./resources/latproduct-3.jpg",quantity: 1 },
-    { id: 4, productname: 'Product 4', price: '$20.00', image: "./resources/latproduct-3.jpg" ,quantity: 1},
-    { id: 5, productname: 'Product 5', price: '$70.00', image: "./resources/latproduct-3.jpg",quantity: 1 },
+    { id: 1, productname: 'Yoga Book', price: '40.00', image: "./resources/latproduct-1.jpg",quantity: 1 },
+    { id: 2, productname: 'Cushion', price: '65.00', image: "./resources/latproduct-2.jpg" ,quantity: 1},
+    { id: 3, productname: 'Yoga Mat', price:'39.00', image: "./resources/latproduct-3.jpg",quantity: 1 },
+    { id: 4, productname: 'Product 4', price: '20.00', image: "./resources/latproduct-3.jpg" ,quantity: 1},
+    { id: 5, productname: 'Product 5', price: '70.00', image: "./resources/latproduct-3.jpg",quantity: 1 },
 ];
 
 let cart = [];
@@ -78,12 +26,14 @@ let cart = [];
 // Function to render products to the DOM
 function renderProducts() {
     const productCards = document.querySelectorAll('.product-card1, .product-card2, .product-card3');
+    const cart =loadCart();
+   
 
     productCards.forEach((card, index) => {
         const product = products[index];
         if (product) {
             card.querySelector('.product-name').innerHTML = product.productname;
-            card.querySelector('.product-price').innerHTML = product.price;
+            card.querySelector('.product-price').innerHTML = '$'+ product.price;
             card.querySelector('.product-image').setAttribute('src', product.image);
             const addCartButton = card.querySelector('.buttoncart');
             addCartButton.setAttribute('data-id', product.id);
@@ -99,9 +49,22 @@ function renderProducts() {
 //Call function to render values to webpage
 renderProducts();
 
+// Update the cart count
+function updateCartCount(cart){
+    const cartCountElement = document.getElementById('cart-count');
+    const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    if (itemCount > 0) {
+        cartCountElement.textContent = itemCount;
+        cartCountElement.style.display = 'block';
+    } else {
+        cartCountElement.style.display = 'none';
+    }
+}
+
 
 // Function to save the cart to local storage
-function saveCart() {
+function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
@@ -110,18 +73,44 @@ function loadCart() {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
         cart = JSON.parse(savedCart);
+        updateCartCount(cart);
         return cart;
-    }
+    } 
+}
+
+// Function to update the cart quantity
+function updateCart(cart) {
+    let itemMap = new Map();
+    let existingItem = null;
+
+    // Process each item in the cart
+    cart.forEach(item => {
+        if (itemMap.has(item.id)) {
+            // If the item ID is already in the map, increment the quantity
+            existingItem = itemMap.get(item.id);
+            existingItem.quantity += 1;
+            itemMap.set(item.id, existingItem);
+        } else {
+            // If the item ID is not in the map, add it
+            itemMap.set(item.id, { ...item });
+        }
+    });
+
+    // Convert the map back to an array
+     cart = Array.from(itemMap.values());
+    saveCart(cart);
+    console.log(cart);
+
 }
 
 // Function to add a product to the cart
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    console.log(cart);
     cart.push(product);
-    console.log(cart);
-    saveCart();
-    alert("Product added!,Click 'Cart' tab to see your cart");
+    saveCart(cart);
+    updateCartCount(cart);
+    updateCart(cart);
+    //alert("Product added!");  
 }
 
 
