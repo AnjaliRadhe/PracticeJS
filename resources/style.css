@@ -250,7 +250,7 @@ footer {
   
     }
 
-    .featuredh2{
+    #featuredh2{
         display: none;
         position: relative;
     }
