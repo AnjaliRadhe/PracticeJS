@@ -162,36 +162,63 @@ footer {
     height: 150px;
 }
 
-
+.menu-icon {
+    display: none;
+    font-size: 2em;
+    cursor: pointer;
+}
 /* MEDIA QUERY TO KEEP IT RESPONSIVE FOR SMALLER SCREENS*/
 @media screen and (max-width: 540px) {
     .subheader {
         display: none;
     }
 
-    .navlink {
-        margin: auto;
-    }
-
     .table-image,
-    .remove {
+    .remove
+     {
         display: none;
-    }
-
-    .navlink {
-        margin: auto;
-        font-size: 15px;
-        padding: 10px;
-    }
-
-    .navlink {
-        margin: auto;
-        font-size: 20px;
-        padding: 10px;
     }
 
     h5,
     .datetime {
         display: none;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 100px;
+        right: 75px;
+        width: 30%;
+        background-color: white;
+    }
+
+ 
+    .menu-icon {
+        display: block;
+        position: fixed;
+        top: 60px;
+        right: 75px;
+         
+    }
+    .navlink {
+        float: right;
+        text-decoration: none;
+        color: #000;
+        height: 10px;
+        font-size: 25px;
+        font-family: H2Font;
+        line-height: 1.4;
+    }
+    
+    .active {
+        color: #4c504f;
+        text-decoration: underline;
+        text-decoration-color: #9CAFAA;
+    }
+    
+    .navlink:hover {
+        color: gray;
+        box-shadow: inset 200px 0 0 0 #9CAFAA;
     }
 }

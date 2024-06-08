@@ -125,10 +125,13 @@ function decrementQuantity(index) {
     const product = cart.find(p => p.id === index);
     if (product.quantity > 1) {
         product.quantity--;
+        saveCart(cart);
+        updateCartCount(cart);
+        renderCart();
     }
-    saveCart(cart);
-    updateCartCount(cart);
-    renderCart();
+    else{
+        removeFromCart(index);
+    }
 }
 
 // Remove an item from the cart
@@ -154,8 +157,31 @@ function updateTotals(cart) {
     document.querySelector('.table2 tr:nth-child(3) td:nth-child(2)').innerText = `$${grandTotal.toFixed(2)}`;
 }
 
-// Initialize cart rendering on page load
-document.addEventListener('DOMContentLoaded', renderCart);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+    
+    menuIcon.addEventListener('click', function() {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    renderCart(); // Ensure this line remains to load the cart on page load
+
+     // Resize event listener
+     let initialWidth = window.innerWidth;
+     window.addEventListener('resize', function() {
+         let currentWidth = window.innerWidth;
+ 
+         // Check if the width crosses the threshold (768px) from smaller to larger
+         if (initialWidth <= 768 && currentWidth > 768) {
+             location.reload();
+         }
+ 
+         initialWidth = currentWidth;
+     });
+});
+
 
 
 

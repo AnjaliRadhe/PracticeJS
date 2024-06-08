@@ -114,5 +114,26 @@ function addToCart(productId) {
 }
 
 
-// Initialize cart rendering on page load
-document.addEventListener('DOMContentLoaded', loadCart);
+document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+    
+    menuIcon.addEventListener('click', function() {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    loadCart(); // Ensure this line remains to load the cart on page load
+
+     // Resize event listener
+     let initialWidth = window.innerWidth;
+     window.addEventListener('resize', function() {
+         let currentWidth = window.innerWidth;
+ 
+         // Check if the width crosses the threshold (768px) from smaller to larger
+         if (initialWidth <= 768 && currentWidth > 768) {
+             location.reload();
+         }
+ 
+         initialWidth = currentWidth;
+     });
+});
