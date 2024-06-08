@@ -11,7 +11,7 @@
 body {
     height: 100vh;
     width: 100%;
-    background-color: #FBF3D5;
+    background-color: #E6E6FA;
 }
 
 /*MAIN CONTAINER*/
@@ -29,14 +29,13 @@ body {
     height: 25px;
     margin-top: 10px;
     color: #FBF3D5;
-    background-color: #bb835e;
+    background-color: #DA70D6;
 }
 
 .subheader {
     display: grid;
     width: 97%;
     justify-items: flex-end;
-    padding-top: 10px;
 }
 
 .spaceneeded{
@@ -54,16 +53,14 @@ header {
 }
 #cart-count {
     position: relative;
-    top: -65px;
+    top: -50px;
     right: -25px;
-    width: 4px;
+    width: 10px;
     height: 15px;
-    background-color: #bb835e;
+    background-color: #9370DB;
     color: white;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 15px;;
+    border-radius: 40%;
+    line-height:15px;
     padding: 5px 10px;
     font-size: 12px;
     display: none; /* Initially hidden */
@@ -76,7 +73,7 @@ header {
 
 .logo {
     margin-top: 10px;
-    width: 220px;
+    width: 270px;
     height: 130px;
     justify-self: center;
     padding-top: 10px;
@@ -91,14 +88,13 @@ header {
 .navlink {
     float: right;
     text-decoration: none;
-    color: #000;
+    color: #4c504f;
     height: 15px;
     padding: 10px;
     font-size: 25px;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
     font-family: H2Font;
-    line-height: 2.5;
     box-shadow: inset 0 0 0 0 #9CAFAA;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
@@ -106,12 +102,13 @@ header {
 .active {
     color: #4c504f;
     text-decoration: underline;
-    text-decoration-color: #9CAFAA;
+    text-decoration-color: #DA70D6;
 }
 
 .navlink:hover {
-    color: #b47a21;
-    box-shadow: inset 200px 0 0 0 #9CAFAA;
+    color: #4c504f;
+    box-shadow: inset 200px 0 0 0 #DA70D6;
+ 
 }
 
 /*FOOTER  ELEMENT STYLING*/
@@ -119,7 +116,7 @@ footer {
     display: flex;
     justify-content: space-between;
     width: 80%;
-    background-color: #bb835e;
+    background-color: #9370DB;
 }
 
 /*TABLE STYLING*/
@@ -154,7 +151,7 @@ footer {
     height: 25px;
     margin-top: 20px;
     color: #FBF3D5;
-    background-color: #9CAFAA;
+    background-color: #9370DB;
 }
 
 .cartimage {

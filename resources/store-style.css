@@ -11,7 +11,7 @@
 body {
     height: 100vh;
     width: 100%;
-    background-color: #FBF3D5;
+    background-color: #E6E6FA;
 }
 
 /*MAIN CONTAINER*/
@@ -35,15 +35,13 @@ header {
 }
 #cart-count {
     position: relative;
-    top: -65px;
+    top: -50px;
     right: -25px;
-    width: 4px;
+    width: 10px;
     height: 15px;
-    background-color: #bb835e;
+    background-color: #9370DB;
     color: white;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
+    border-radius: 40%;
     line-height: 15px;
     padding: 5px 10px;
     font-size: 12px;
@@ -57,13 +55,12 @@ header {
     height: 25px;
     margin-top: 10px;
     color: #FBF3D5;
-    background-color: #bb835e;
+    background-color: #DA70D6;
 }
 .subheader {
     display: grid;
     width: 97%;
     justify-items:flex-end;
-    padding-top: 10px;
 }
 .left-nav {
     display: grid;
@@ -73,7 +70,7 @@ header {
 
 .logo {
     margin-top: 10px;
-    width: 220px;
+    width: 270px;
     height: 130px;
     justify-self: center;
     padding-top: 10px;
@@ -88,14 +85,13 @@ header {
 .navlink {
     float: right;
     text-decoration: none;
-    color: #000;
+    color: #4c504f;
     height: 15px;
     padding: 10px;
     font-size: 25px;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
     font-family: H2Font;
-    line-height: 2.5;
     box-shadow: inset 0 0 0 0 #9CAFAA;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
@@ -103,12 +99,12 @@ header {
 .active {
     color: #4c504f;
     text-decoration: underline;
-    text-decoration-color: #9CAFAA;
+    text-decoration-color: #DA70D6;
 }
 
 .navlink:hover {
-    color: #b47a21;
-    box-shadow: inset 200px 0 0 0 #9CAFAA;
+    color: #4c504f;
+    box-shadow: inset 200px 0 0 0 #DA70D6;
 }
 
 
@@ -119,7 +115,7 @@ header {
     grid-template-rows: 5fr 1fr 1fr 1fr;
     gap: 10px;
     width: 80%;
-    height: 450px;
+    height: 550px;
     margin-bottom: 10px;
 }
 
@@ -129,9 +125,9 @@ header {
     grid-area: 1/1/5/2;
     width: 100%;
     margin: auto;
-    background-color: #9CAFAA;
-    height: 450px;
-    border: 1px solid grey;
+    background-color: #fff;
+    height: 520px;
+   
 }
 
 .product-card2 {
@@ -140,9 +136,9 @@ header {
     grid-area: 1/2/5/3;
     width: 100%;
     margin: auto;
-    background-color: #9CAFAA;
-    height: 450px;
-    border: 1px solid grey;
+    background-color: #fff;
+    height: 520px;
+   
 }
 
 .product-card3 {
@@ -151,21 +147,21 @@ header {
     grid-area: 1/3/5/4;
     width: 100%;
     margin: auto;
-    background-color: #9CAFAA;
-    height: 450px;
-    border: 1px solid grey;
+    background-color: #fff;
+    height: 520px;
+   
 }
 
 .product-card1 h2,
 .product-card2 h2,
 .product-card3 h2 {
-    color: #FBF3D5;
+    color: #9370DB;
     font-family: H2Font;
 }
 
 .product-image
 {
-    width: 200px;
+    width: 250px;
     height: 320px;
     margin-top: 30px;
     border: 3px solid black;
@@ -174,32 +170,11 @@ header {
 .buttoncart {
     width: 100px;
     height: 25px;
-    color: #ffbd59;
+    color: #000;
     background-color:#ffffff ;
 }
 
-/*FEATURED PRODUCT ELEMENT STYLING*/
-.featured-product {
-    display: grid;
-    width: 80%;
-    height: 180px;
-    background-color: #EFBC9B;
-    grid-template-columns: 1fr 2fr;
-
-}
-
-.featured-product h2 {
-    color: #000;
-}
-
-.featured-product-image {
-  padding-top: 30px;
-    width: 150px;
-    height: 150px;
-    justify-self: center;
-    align-self: center;   
-}
-
+ 
 .details {
     padding-left: 10px;
     padding-top: 20px;
@@ -218,7 +193,7 @@ footer {
     display: flex;
     justify-content:space-between;
     width: 80%;
-    background-color: #bb835e;
+    background-color: #9370DB;
 }
 
 /* MEDIA QUERY TO KEEP IT RESPONSIVE FOR SMALLER SCREENS*/
