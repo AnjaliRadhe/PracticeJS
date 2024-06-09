@@ -292,7 +292,7 @@ footer {
     .navlink {
         float: right;
         text-decoration: none;
-        color: #000;
+        color: #4c504f;
         height: 10px;
         font-size: 25px;
         font-family: H2Font;
@@ -302,11 +302,11 @@ footer {
     .active {
         color: #4c504f;
         text-decoration: underline;
-        text-decoration-color: #9CAFAA;
+        text-decoration-color: #DA70D6;
     }
     
     .navlink:hover {
         color: gray;
-        box-shadow: inset 200px 0 0 0 #9CAFAA;
+        box-shadow: inset 200px 0 0 0 #DA70D6;
     }
 }
